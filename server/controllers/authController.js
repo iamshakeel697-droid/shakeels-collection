@@ -72,6 +72,38 @@ const logout = async (req, res) => {
   res.status(200).json({ success: true, message: 'Logged out successfully' });
 };
 
+const resetAdminPassword = async (req, res, next) => {
+  try {
+    const { secret, email, newPassword } = req.body;
+
+    if (!process.env.RESET_SECRET || secret !== process.env.RESET_SECRET) {
+      return res.status(403).json({ success: false, message: 'Forbidden' });
+    }
+
+    if (!email || !newPassword || newPassword.length < 8) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email and a password of at least 8 characters are required',
+      });
+    }
+
+    const admin = await Admin.findOne({ email: email.toLowerCase().trim() });
+
+    if (!admin) {
+      return res.status(404).json({ success: false, message: 'Admin not found with this email' });
+    }
+
+    admin.password = newPassword;
+    admin.loginAttempts = 0;
+    admin.lockUntil = null;
+    await admin.save();
+
+    return res.status(200).json({ success: true, message: 'Password reset successfully' });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const getMe = async (req, res, next) => {
   try {
     const admin = await Admin.findById(req.admin.id);
@@ -86,5 +118,3 @@ const getMe = async (req, res, next) => {
     next(err);
   }
 };
-
-module.exports = { login, logout, getMe };
