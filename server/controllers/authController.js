@@ -118,3 +118,4 @@ const getMe = async (req, res, next) => {
     next(err);
   }
 };
+module.exports = { login, logout, getMe, resetAdminPassword };
