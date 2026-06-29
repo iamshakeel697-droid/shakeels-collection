@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Loader2, RefreshCw, Trash2, Phone, MapPin } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { orderApi } from '../../api';
-import { formatPrice, formatDateTime } from '../../utils/format';
+import { orderApi } from '../api';
+import { formatPrice, formatDateTime } from '../utils/format';
 
 const statusStyles = {
   pending: 'bg-amber-50 text-amber-700',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { productApi } from '../../api';
+import { productApi } from '../api';
 
 const emptyForm = {
   title: '',

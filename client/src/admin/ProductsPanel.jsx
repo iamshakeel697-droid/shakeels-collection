@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Pencil, Trash2, Loader2, ImageOff } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { productApi } from '../../api';
-import { formatPrice } from '../../utils/format';
+import { productApi } from '../api';
+import { formatPrice } from '../utils/format';
 import ProductFormModal from './ProductFormModal';
 
 const ProductsPanel = () => {

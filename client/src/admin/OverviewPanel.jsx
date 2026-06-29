@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Package, ClipboardList, DollarSign, Clock, Loader2 } from 'lucide-react';
-import { productApi, orderApi } from '../../api';
-import { formatPrice, formatDateTime } from '../../utils/format';
+import { productApi, orderApi } from '../api';
+import { formatPrice, formatDateTime } from '../utils/format';
 
 const StatCard = ({ icon: Icon, label, value, accent }) => (
   <div className="bg-white rounded-2xl border border-ink-100 shadow-soft p-5 flex items-center gap-4">
